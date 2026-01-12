@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Our first month</title>
+
+    <style>
+        body {
+            background: #f7dce5;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+
+        /* Collage: 7 fotos estilo marco */
+        .collage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .foto {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border: 10px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        /* Posiciones y rotaciones */
+        .f1 { top: 20px; left: 40px; transform: rotate(-8deg); background-image: url("m1.jpg"); }
+        .f2 { top: 60px; right: 40px; transform: rotate(6deg); background-image: url("m2.jpg"); }
+        .f3 { bottom: 40px; left: 60px; transform: rotate(10deg); background-image: url("m3.jpg"); }
+        .f4 { bottom: 80px; right: 60px; transform: rotate(-12deg); background-image: url("m4.jpg"); }
+        .f5 { top: 200px; left: 50%; transform: translateX(-50%) rotate(4deg); background-image: url("m5.jpg"); }
+        .f6 { bottom: 200px; left: 150px; transform: rotate(-5deg); background-image: url("m6.jpg"); }
+        .f7 { bottom: 200px; right: 150px; transform: rotate(7deg); background-image: url("m7.jpg"); }
+
+        /* Carta */
+        .carta {
+            width: 300px;
+            height: 200px;
+            background: white;
+            border: 2px solid pink;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #c93d66;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform .4s;
+            margin-bottom: 15px;
+            backdrop-filter: blur(2px);
+        }
+
+        .carta:hover {
+            transform: scale(1.05);
+        }
+
+        .corazon {
+            font-size: 80px;
+            color: red;
+        }
+
+        .dedicatoria {
+            font-style: italic;
+            font-size: 22px;
+            color: #c93d66;
+            text-shadow: 1px 1px 3px white;
+        }
+
+        #videoSection {
+            display: none;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Collage de fondo -->
+    <div class="collage">
+        <div class="foto f1"></div>
+        <div class="foto f2"></div>
+        <div class="foto f3"></div>
+        <div class="foto f4"></div>
+        <div class="foto f5"></div>
+        <div class="foto f6"></div>
+        <div class="foto f7"></div>
+    </div>
+
+    <!-- Carta -->
+    <div class="carta" onclick="abrirCarta()">
+        <div class="corazon">❤️</div>
+    </div>
+
+    <div class="dedicatoria">
+        Para: Jenny esto es de todo corazón
+    </div>
+
+    <!-- Video oculto -->
+    <div id="videoSection">
+        <h2></h2>
+        <video width="700" height="700" controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta video.
+        </video>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            let fecha = prompt("Ingresa la fecha para abrir la carta (dd-mm-aaaa):");
+
+            if (fecha === "12-12-2025") {
+                document.querySelector(".carta").style.display = "none";
+                document.querySelector(".dedicatoria").style.display = "none";
+                document.getElementById("videoSection").style.display = "block";
+            } else {
+                alert("Fecha incorrecta. No puedes abrirla aún.");
+            }
+        }
+    </script>
+
+</body>
+</html>
